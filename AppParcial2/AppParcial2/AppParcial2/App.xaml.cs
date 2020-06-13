@@ -11,7 +11,7 @@ namespace AppParcial2
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MockupsPage();
         }
 
         protected override void OnStart()
