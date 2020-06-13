@@ -18,6 +18,8 @@ namespace AppParcial2.ViewModels
         private string albumId;
         private string id;
         private string title;
+        private Uri url;
+        private Uri thumbnailUrl;
         #endregion
 
         #region Properties
@@ -36,6 +38,16 @@ namespace AppParcial2.ViewModels
             get { return this.title; }
             set { SetValue(ref this.title, value); }
         }
+        public Uri Url
+        {
+            get { return this.url; }
+            set { SetValue(ref this.url, value); }
+        }
+        public Uri ThumbnailUrl
+        {
+            get { return this.thumbnailUrl; }
+            set { SetValue(ref this.thumbnailUrl, value); }
+        }
         #endregion
 
         #region Constructor
@@ -49,7 +61,7 @@ namespace AppParcial2.ViewModels
         #region Methods
         private async void LoadMockupsAsync()
         {
-            var country = await this.apiService.Get<Mockups>(
+            var mockups = await this.apiService.Get<Mockups>(
                 "https://jsonplaceholder.typicode.com/",
                 "rest/photos",
                 "name/ID"
@@ -57,6 +69,8 @@ namespace AppParcial2.ViewModels
             this.AlbumId = mockups[0].AlbumId;
             this.Id = mockups[0].Id;
             this.Tittle = mockups[0].Tittle;
+            this.Url = mockups[0].Url;
+            this.ThumbnailUrl = mockups[0].ThumbnailUrl;
         }
         #endregion
     }
